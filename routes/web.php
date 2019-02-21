@@ -73,7 +73,8 @@ Route::get('/show/{contact_id}', 'ContactController@showMsg');
 Route::post('/send','ContactController@send');
 Route::get('/email','ContactController@email');
 
-//---------------------sociallite-----------------changes in files: LoginController(in auth)&&app.php&&service.php>>
+
+//---------------------sociallite-----------------changes in files: LoginController(in auth)&&app.php & service.php[in config path]>>
 Route::get('login/facebook', 'Auth\LoginController@redirectToProvider');
 Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');
 
