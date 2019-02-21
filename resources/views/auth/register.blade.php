@@ -276,6 +276,16 @@
                     </div>
                 </form>
 
+
+                {{--socialite------------------------------------}}
+                <div class="form-group row text-center">
+                    <div class="col-lg-7 col-md-8 col-10 mx-auto">
+                        <a href="login/facebook" class="btn btn-register px-5 mb-0 font-weight-bold">
+                            {{ __(' تسجيل الدخول بحساب الفيس بوك') }}
+                        </a>
+                    </div>
+                </div>
+
                 {{--</div>--}}
                 {{--</div>--}}
             </div>
