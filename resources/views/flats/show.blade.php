@@ -272,17 +272,17 @@
                             <small>{{$arr_user_body[$i]}}</small>
 
 
-
-                            {{--<a href="/editComment/{{$arr_comment_id[$i]}}" class="float-right">Edit</a>--}}
-
                             @if(!Auth::guest())
                             {{--معناه اللى مسجل فقط هو اللى يشوف الجزء ده--}}
 
 
                                 @if (Auth::user()->id == $arr_user_id[$i])
 
-                                    {{Auth::user()->id}}
-                                {{$arr_user_id[$i]}}
+                                    {{--{{Auth::user()->id}}--}}
+                                    {{--{{$arr_user_id[$i]}}--}}
+
+                                    <a href="/editComment/{{$arr_comment_id[$i]}}" class="float-right">Edit</a>
+
                                     <a href="/delComment/{{$arr_comment_id[$i]}}" class="float-right">Delete</a>
                                 @endif
 

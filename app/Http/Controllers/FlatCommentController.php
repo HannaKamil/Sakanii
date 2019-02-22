@@ -70,9 +70,9 @@ class FlatCommentController extends Controller
      * @param  \App\Model\Flat_comment  $flat_comment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Flat_comment $flat_comment)
+    public function edit(Flat_comment $idd)
     {
-        //
+        return view('flats.editcomment', compact('idd'));
     }
 
     /**
@@ -82,9 +82,14 @@ class FlatCommentController extends Controller
      * @param  \App\Model\Flat_comment  $flat_comment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Flat_comment $flat_comment)
+
+
+
+    public function update(Request $request, $idOfComment)
     {
-        //
+        DB::table('flat_comments')->where('flat_comment_id', $idOfComment)->update(array('body' => $request->form_comment));
+
+        return redirect('/flats');
     }
 
     /**
@@ -96,11 +101,8 @@ class FlatCommentController extends Controller
     public function destroy(Flat_comment $idd)
     {
 
-        if ($idd->user_id == Auth::user()->id) {
+
             $idd->delete();
             return back();
-        }else{
-            return 'Not Allowed!';
-        }
     }
 }

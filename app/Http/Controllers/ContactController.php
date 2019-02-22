@@ -93,6 +93,7 @@ class ContactController extends Controller
      * @param  \App\Contact $contact
      * @return \Illuminate\Http\Response
      */
+
     public function update(Request $request, $contact_id)
     {
         DB::table('contacts')->where('contact_id', $contact_id)->update(array('name' => $request->form_name,

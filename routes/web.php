@@ -72,6 +72,7 @@ Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallba
 ///////////-----------------Comments-----------------------/////
 
 
-//Route::get('/delComment/{$arr_comment_id}', 'FlatCommentController@destroy');
 Route::get('/delComment/{idd}', 'FlatCommentController@destroy');
 
+Route::get('/editComment/{idd}', 'FlatCommentController@edit');
+Route::post('/updateComment/{idd}', 'FlatCommentController@update');
