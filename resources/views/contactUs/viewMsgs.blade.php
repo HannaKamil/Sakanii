@@ -45,7 +45,7 @@
 
 
             <!--frist way to Edit-->
-                <td><button><a href="/edit/{{$message->contact_id}}">Edit</a></button></td>
+                {{--<td><button><a href="/edit/{{$message->contact_id}}">Edit</a></button></td>--}}
                 <td><button><a href="/show/{{$message->contact_id}}">Show Message</a></button></td>
 
                 <td><button><a href="/replay/{{$message->contact_id}}">replay</a></button></td>

@@ -2,11 +2,6 @@
 
 
 
-
-
-
-
-
 <form action="/updateComment/{{$idd->flat_comment_id}}" method="post">
     {{csrf_field()}}
     <div class="form-group">
@@ -15,7 +10,7 @@
     </div>
 
     <div class="form-group text-right">
-        <button type="submit" class="btn btn-outline-primary font-weight-bold px-4">اضف تعليق</button>
+        <button type="submit" class="btn btn-outline-primary font-weight-bold px-4">قم بالتحديث</button>
 
     </div>
 </form>

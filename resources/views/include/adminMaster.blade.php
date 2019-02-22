@@ -174,67 +174,77 @@
                 </ul>
                 <!-- /.dropdown-tasks -->
             </li>
-            <!-- /.dropdown -->
+
+            <!-- /.dropdown comments---------------------- -->
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                     <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-alerts">
                     <li>
+                    <li>
+                        <?php $flat_comments=  \Illuminate\Support\Facades\DB::table('flat_comments')->get();?>
+                        @foreach($flat_comments as $flat_comment)
+
                         <a href="#">
                             <div>
-                                <i class="fa fa-comment fa-fw"></i> New Comment
-                                <span class="pull-right text-muted small">4 minutes ago</span>
+                                <i class="fa fa-comment fa-fw"></i> {{$flat_comment->body}}
+                                <span class="pull-right text-muted small">{{$flat_comment->created_at}}</span>
                             </div>
                         </a>
                     </li>
                     <li class="divider"></li>
-                    <li>
-                        <a href="#">
-                            <div>
-                                <i class="fa fa-twitter fa-fw"></i> 3 New Followers
-                                <span class="pull-right text-muted small">12 minutes ago</span>
-                            </div>
-                        </a>
-                    </li>
+                    @endforeach
+                    {{--<li>--}}
+                        {{--<a href="#">--}}
+                            {{--<div>--}}
+                                {{--<i class="fa fa-twitter fa-fw"></i> 3 New Followers--}}
+                                {{--<span class="pull-right text-muted small">12 minutes ago</span>--}}
+                            {{--</div>--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
+                    {{--<li class="divider"></li>--}}
+                    {{--<li>--}}
+                        {{--<a href="#">--}}
+                            {{--<div>--}}
+                                {{--<i class="fa fa-envelope fa-fw"></i> Message Sent--}}
+                                {{--<span class="pull-right text-muted small">4 minutes ago</span>--}}
+                            {{--</div>--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
+                    {{--<li class="divider"></li>--}}
+                    {{--<li>--}}
+                        {{--<a href="#">--}}
+                            {{--<div>--}}
+                                {{--<i class="fa fa-tasks fa-fw"></i> New Task--}}
+                                {{--<span class="pull-right text-muted small">4 minutes ago</span>--}}
+                            {{--</div>--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
+                    {{--<li class="divider"></li>--}}
+                    {{--<li>--}}
+                        {{--<a href="#">--}}
+                            {{--<div>--}}
+                                {{--<i class="fa fa-upload fa-fw"></i> Server Rebooted--}}
+                                {{--<span class="pull-right text-muted small">4 minutes ago</span>--}}
+                            {{--</div>--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
+
                     <li class="divider"></li>
-                    <li>
-                        <a href="#">
-                            <div>
-                                <i class="fa fa-envelope fa-fw"></i> Message Sent
-                                <span class="pull-right text-muted small">4 minutes ago</span>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">
-                            <div>
-                                <i class="fa fa-tasks fa-fw"></i> New Task
-                                <span class="pull-right text-muted small">4 minutes ago</span>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">
-                            <div>
-                                <i class="fa fa-upload fa-fw"></i> Server Rebooted
-                                <span class="pull-right text-muted small">4 minutes ago</span>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
                         <a class="text-center" href="#">
-                            <strong>See All Alerts</strong>
+                            <strong>
+                                See All Comments
+                            </strong>
                             <i class="fa fa-angle-right"></i>
                         </a>
                     </li>
                 </ul>
                 <!-- /.dropdown-alerts -->
             </li>
-            <!-- /.dropdown -->
+            <!-- /.dropdown Comments---------------------------------->
+
+
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                     <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
