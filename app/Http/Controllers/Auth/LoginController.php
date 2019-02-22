@@ -62,8 +62,8 @@ class LoginController extends Controller
         $findUser = User::where('email',$userSocial->email)->first();
         if ($findUser){
             Auth::login($findUser);
-             return 'done with old';
-//            return Redirect::back()->with('msg', 'The Message');
+//             return 'done with old';
+            return Redirect::back()->with('msg', 'The Message');
 
         }else{
             $user = new User;
@@ -71,12 +71,12 @@ class LoginController extends Controller
             $user->email = $userSocial->email;
             $user->username = ' ';
             $user->phone_number = ' ';
-            $user->password = bcrypt('123456');
+            $user->password = bcrypt('123456a');
             $user->save();
             Auth::login($user);
-             return 'done with new';
+//             return 'done with new';
 
-//            return Redirect::back()->with('msg', 'The Message');
+            return Redirect::back()->with('msg', 'The Message');
 
         }
     }
