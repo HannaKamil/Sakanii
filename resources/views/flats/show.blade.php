@@ -262,7 +262,7 @@
                 {{--{{Form::submit('اضافه تعليق' , ['class' => 'btn btn-success px-5 mt-5 font-weight-bold'])}}--}}
                 {{--{!! Form::close() !!}--}}
             {{--</div>--}}
-
+            @if(!Auth::guest())
             <div class="container">
                 @if (isset($arr_comment_id))
                     <?php  $count=count($arr_comment_id);?>
@@ -271,16 +271,27 @@
                             <div>{{$arr_user_name[$i]}}</div>
                             <small>{{$arr_user_body[$i]}}</small>
 
+
+
                             {{--<a href="/editComment/{{$arr_comment_id[$i]}}" class="float-right">Edit</a>--}}
-                            {{--@if(!Auth::guest()) --}}{{--معناه اللى مسجل فقط هو اللى يشوف الجزء ده--}}
-                            {{--@if (Auth::user()->id == $flats->id) --}}{{--if userId = flat_id معناه اليوز اي دي بيساوي الفلات اي دي--}}
+                            @if(!Auth::guest())
+                            {{--معناه اللى مسجل فقط هو اللى يشوف الجزء ده--}}
+
+                            <?php $flat_comments= \Illuminate\Support\Facades\DB::table('flat_comments')->get();?>
+                            @foreach ($flat_comments as $flat_comment)
+
+                                @endforeach
+
+                                {{--@if (Auth::user()->id == $flat_comment->user_id)--}}
                             <a href="/delComment/{{$arr_comment_id[$i]}}" class="float-right">Delete</a>
                             {{--@endif--}}
-                            {{--@endif--}}
+
+                            @endif
                         </div>
                     @endfor
                 @endif
             </div>
+
 
 
             <div class="container my-5">
@@ -301,6 +312,7 @@
 
 
         </div>
+        @endif
     </section>
 
 
