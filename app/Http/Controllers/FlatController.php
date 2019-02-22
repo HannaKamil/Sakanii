@@ -114,7 +114,7 @@ class FlatController extends Controller
             foreach ($arr_user_id as $id) {
                 $arr_user_name[] = DB::table('users')->where('id', '=', $id)->value('name');  //to find the name by the id
             }
-            return view('flats.show', compact('flats', 'arr_comment_id','arr_user_body','arr_user_name'));
+            return view('flats.show', compact('flats', 'arr_comment_id','arr_user_body','arr_user_name','arr_user_id'));
         }
         else {
             return view('flats.show', compact('flats'));

@@ -262,7 +262,7 @@
                 {{--{{Form::submit('اضافه تعليق' , ['class' => 'btn btn-success px-5 mt-5 font-weight-bold'])}}--}}
                 {{--{!! Form::close() !!}--}}
             {{--</div>--}}
-            @if(!Auth::guest())
+
             <div class="container">
                 @if (isset($arr_comment_id))
                     <?php  $count=count($arr_comment_id);?>
@@ -274,17 +274,17 @@
 
 
                             {{--<a href="/editComment/{{$arr_comment_id[$i]}}" class="float-right">Edit</a>--}}
+
                             @if(!Auth::guest())
                             {{--معناه اللى مسجل فقط هو اللى يشوف الجزء ده--}}
 
-                            <?php $flat_comments= \Illuminate\Support\Facades\DB::table('flat_comments')->get();?>
-                            @foreach ($flat_comments as $flat_comment)
 
-                                @endforeach
+                                @if (Auth::user()->id == $arr_user_id[$i])
 
-                                {{--@if (Auth::user()->id == $flat_comment->user_id)--}}
-                            <a href="/delComment/{{$arr_comment_id[$i]}}" class="float-right">Delete</a>
-                            {{--@endif--}}
+                                    {{Auth::user()->id}}
+                                {{$arr_user_id[$i]}}
+                                    <a href="/delComment/{{$arr_comment_id[$i]}}" class="float-right">Delete</a>
+                                @endif
 
                             @endif
                         </div>
@@ -293,25 +293,25 @@
             </div>
 
 
+            @if(!Auth::guest())
+                <div class="container my-5">
 
-            <div class="container my-5">
+                    <form action="/flats/{{$flats->flat_id}}" method="post">
+                        {{csrf_field()}}
+                        <div class="form-group">
+                            {{--<label for="comment">comment</label>--}}
+                            <textarea name="form_comment"  id="comment" class="form-control text-right" placeholder=".. اضف تعليق" required></textarea>
+                        </div>
 
-                <form action="/flats/{{$flats->flat_id}}" method="post">
-                    {{csrf_field()}}
-                    <div class="form-group">
-                        {{--<label for="comment">comment</label>--}}
-                        <textarea name="form_comment"  id="comment" class="form-control text-right" placeholder=".. اضف تعليق" required></textarea>
-                    </div>
+                        <div class="form-group text-right">
+                            <button type="submit" class="btn btn-outline-primary font-weight-bold px-4">اضف تعليق</button>
 
-                    <div class="form-group text-right">
-                        <button type="submit" class="btn btn-outline-primary font-weight-bold px-4">اضف تعليق</button>
+                        </div>
+                    </form>
+                </div>
 
-                    </div>
-                </form>
+
             </div>
-
-
-        </div>
         @endif
     </section>
 
