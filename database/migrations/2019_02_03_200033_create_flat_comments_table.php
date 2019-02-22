@@ -20,8 +20,6 @@ class CreateFlatCommentsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->integer('flat_id')->unsigned();
             $table->foreign('flat_id')->references('flat_id')->on('flats');
-//            $table->integer('comment_id')->unsigned()->default('1');;
-//            $table->foreign('comment_id')->references('comment_id')->on('comments');
             $table->timestamps();
         });
     }

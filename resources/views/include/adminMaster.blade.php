@@ -175,6 +175,7 @@
                 <!-- /.dropdown-tasks -->
             </li>
 
+
             <!-- /.dropdown comments---------------------- -->
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -183,53 +184,46 @@
                 <ul class="dropdown-menu dropdown-alerts">
                     <li>
                     <li>
-                        <?php $flat_comments=  \Illuminate\Support\Facades\DB::table('flat_comments')->get();?>
+                        <?php
+                        $flat_comments=  \Illuminate\Support\Facades\DB::table('flat_comments')->latest('created_at')->paginate(5);
+                        ?>
                         @foreach($flat_comments as $flat_comment)
-
                         <a href="#">
                             <div>
-                                <i class="fa fa-comment fa-fw"></i> {{$flat_comment->body}}
+                                <div>from: </div>
+                                <i class="fa fa-comment fa-fw"></i>{{$flat_comment->body}}<br>
                                 <span class="pull-right text-muted small">{{$flat_comment->created_at}}</span>
                             </div>
+
                         </a>
+                            <hr>
+                            @endforeach
                     </li>
-                    <li class="divider"></li>
+
+
+                    {{--**********to test********--}}
+                    <?php
+                    $users=  \Illuminate\Support\Facades\DB::table('users')->get();
+                    ?>
+
+                    @foreach($users as $user)
+                        name: {{$user->name}}<br>
+                        id: {{$user->id}}<br>
                     @endforeach
-                    {{--<li>--}}
-                        {{--<a href="#">--}}
-                            {{--<div>--}}
-                                {{--<i class="fa fa-twitter fa-fw"></i> 3 New Followers--}}
-                                {{--<span class="pull-right text-muted small">12 minutes ago</span>--}}
-                            {{--</div>--}}
-                        {{--</a>--}}
-                    {{--</li>--}}
-                    {{--<li class="divider"></li>--}}
-                    {{--<li>--}}
-                        {{--<a href="#">--}}
-                            {{--<div>--}}
-                                {{--<i class="fa fa-envelope fa-fw"></i> Message Sent--}}
-                                {{--<span class="pull-right text-muted small">4 minutes ago</span>--}}
-                            {{--</div>--}}
-                        {{--</a>--}}
-                    {{--</li>--}}
-                    {{--<li class="divider"></li>--}}
-                    {{--<li>--}}
-                        {{--<a href="#">--}}
-                            {{--<div>--}}
-                                {{--<i class="fa fa-tasks fa-fw"></i> New Task--}}
-                                {{--<span class="pull-right text-muted small">4 minutes ago</span>--}}
-                            {{--</div>--}}
-                        {{--</a>--}}
-                    {{--</li>--}}
-                    {{--<li class="divider"></li>--}}
-                    {{--<li>--}}
-                        {{--<a href="#">--}}
-                            {{--<div>--}}
-                                {{--<i class="fa fa-upload fa-fw"></i> Server Rebooted--}}
-                                {{--<span class="pull-right text-muted small">4 minutes ago</span>--}}
-                            {{--</div>--}}
-                        {{--</a>--}}
-                    {{--</li>--}}
+
+
+
+
+                    <?php
+                    $Fcomments=  \Illuminate\Support\Facades\DB::table('flat_comments')->get();
+                    ?>
+
+                    @foreach($Fcomments as $Fcomment)
+                        id: {{$Fcomment->user_id}}<br>
+                    @endforeach
+                    {{--**************************--}}
+
+
 
                     <li class="divider"></li>
                         <a class="text-center" href="#">
