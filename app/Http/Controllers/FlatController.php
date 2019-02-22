@@ -101,27 +101,20 @@ class FlatController extends Controller
      */
     public function show(Flat $flat)
     {
-
         $flats = Flat::find($flat->flat_id);
         $comments_flat = DB::table('flat_comments')->where('flat_id', '=', $flat->flat_id)->get();
 
         foreach ($comments_flat as $comment) {
             $arr_user_body[] = $comment->body;
             $arr_user_id[] = $comment->user_id;
+            $arr_comment_id[]=$comment->flat_comment_id;
         }
         if (!empty($arr_user_id)) {
 
             foreach ($arr_user_id as $id) {
                 $arr_user_name[] = DB::table('users')->where('id', '=', $id)->value('name');  //to find the name by the id
             }
-
-
-            $count = count($comments_flat);
-
-            for ($i = 0; $i < $count; $i++) {
-                $arr_mix_com_user[] = ["$arr_user_name[$i]" => "$arr_user_body[$i]"];
-            }
-            return view('flats.show', compact('flats', 'arr_mix_com_user'));
+            return view('flats.show', compact('flats', 'arr_comment_id','arr_user_body','arr_user_name'));
         }
         else {
             return view('flats.show', compact('flats'));

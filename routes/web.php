@@ -46,15 +46,6 @@ Route::get('/bookedflats', 'adminController@BookedFlats');
 
 Route::Resource('/contactUs', 'ContactController');
 
-//Route::get('/contactUs', [
-//    'uses'=>'ContactController@index',
-//    'as'=>'contactUs.viewMsgs',
-//    'middleware'=>'roles',
-//    'roles'=>['admin']
-//
-//
-//]);
-
 Route::get('/del/{contact_id}', 'ContactController@destroy');
 
 Route::get('/replay/{contact_id}', 'ContactController@formReplay');
@@ -77,4 +68,10 @@ Route::get('/email','ContactController@email');
 //---------------------sociallite-----------------changes in files: LoginController(in auth)&&app.php & service.php[in config path]&& add button in: views>auth>Register.blade>>
 Route::get('login/facebook', 'Auth\LoginController@redirectToProvider');
 Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');
+
+///////////-----------------Comments-----------------------/////
+
+
+//Route::get('/delComment/{$arr_comment_id}', 'FlatCommentController@destroy');
+Route::get('/delComment/{idd}', 'FlatCommentController@destroy');
 

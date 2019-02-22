@@ -263,20 +263,26 @@
                 {{--{!! Form::close() !!}--}}
             {{--</div>--}}
 
-            <div class="container mt-5 text-right">
-                @if (isset($arr_mix_com_user))
-                    @foreach($arr_mix_com_user as $mix )
+            <div class="container">
+                @if (isset($arr_comment_id))
+                    <?php  $count=count($arr_comment_id);?>
+                    @for ($i = 0; $i < $count; $i++)
+                        <div class="alert alert-danger">
+                            <div>{{$arr_user_name[$i]}}</div>
+                            <small>{{$arr_user_body[$i]}}</small>
 
-                        @foreach($mix as $mix_key => $mix_valu )
-
-                            <div class="mb-5">
-                                <div class="font-weight-bold text-info mb-2 comment-name">{{$mix_key}}</div>
-                                <p class=""> {{$mix_valu}}</p>
-                            </div>
-                        @endforeach
-                    @endforeach
+                            {{--<a href="/editComment/{{$arr_comment_id[$i]}}" class="float-right">Edit</a>--}}
+                            {{--@if(!Auth::guest()) --}}{{--معناه اللى مسجل فقط هو اللى يشوف الجزء ده--}}
+                            {{--@if (Auth::user()->id == $flats->id) --}}{{--if userId = flat_id معناه اليوز اي دي بيساوي الفلات اي دي--}}
+                            <a href="/delComment/{{$arr_comment_id[$i]}}" class="float-right">Delete</a>
+                            {{--@endif--}}
+                            {{--@endif--}}
+                        </div>
+                    @endfor
                 @endif
             </div>
+
+
             <div class="container my-5">
 
                 <form action="/flats/{{$flats->flat_id}}" method="post">

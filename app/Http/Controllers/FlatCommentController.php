@@ -93,8 +93,14 @@ class FlatCommentController extends Controller
      * @param  \App\Model\Flat_comment  $flat_comment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Flat_comment $flat_comment)
+    public function destroy(Flat_comment $idd)
     {
-        //
+
+        if ($idd->user_id == Auth::user()->id) {
+            $idd->delete();
+            return back();
+        }else{
+            return 'Not Allowed!';
+        }
     }
 }
