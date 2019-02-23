@@ -37,11 +37,11 @@
 </head>
 
 <body>
-<div id="wrapper">
+<div id="wrapper" style="direction: rtl;">
 
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-        <div class="navbar-header">
+        <div class="navbar-header" style="margin: 0">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
@@ -55,7 +55,7 @@
         {{--Messages Section-------------------------------------------------------------------}}
 
 
-        <ul class="nav navbar-top-links navbar-right">
+        <ul class="nav navbar-top-links navbar-left custom">
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                     <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
@@ -66,7 +66,7 @@
                     <?php $messages = \Illuminate\Support\Facades\DB::table('contacts')->get();?>
 
                     @foreach($messages as $message)
-                        <li class="divider"></li>
+                        {{--<li class="divider"></li>--}}
                         <li>
                             <a href="/show/{{$message->contact_id}}">
                                 <div>
@@ -83,8 +83,8 @@
                     <li class="divider"></li>
                     <li>
                         <a class="text-center" href="/contactUs">
-                            <strong>Read All Messages</strong>
-                            <i class="fa fa-angle-right"></i>
+                            <strong>جميع الرسائل</strong>
+                            <i class="fa fa-angle-left"></i>
                         </a>
                     </li>
                 </ul>
@@ -182,17 +182,18 @@
                     <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-alerts">
-                    <li>
-                    <li>
+                    <li >
+                    <li >
                         <?php
                         $flat_comments=  \Illuminate\Support\Facades\DB::table('flat_comments')->latest('created_at')->paginate(5);
                         ?>
                         @foreach($flat_comments as $flat_comment)
                         <a href="#">
-                            <div>
-                                <div>from: </div>
-                                <i class="fa fa-comment fa-fw"></i>{{$flat_comment->body}}<br>
-                                <span class="pull-right text-muted small">{{$flat_comment->created_at}}</span>
+                            <div class="clearfix">
+                                <div></div>
+                                <span class="pull-right">  بواسطة<br> <i class="fa fa-comment fa-fw text-danger"></i>{{$flat_comment->body}}</span>
+                                <span class="pull-left text-muted small" style="margin-top: 15px">{{$flat_comment->created_at}}</span>
+
                             </div>
 
                         </a>
@@ -244,9 +245,9 @@
                     <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-user">
-                    <li><a href="/account"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                    <li><a href="/account"><i class="fa fa-user fa-fw"></i> الملف الشخصى</a>
                     </li>
-                    <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                    <li><a href="#"><i class="fa fa-gear fa-fw"></i> الخصائص</a>
                     </li>
                     <li class="divider"></li>
                     <li>
@@ -266,6 +267,9 @@
             <!-- /.dropdown -->
         </ul>
 
+
+        <div class="clearfix"></div>
+
         <div class="navbar-default sidebar" role="navigation">
             <div class="sidebar-nav navbar-collapse">
                 <ul class="nav" id="side-menu">
@@ -281,7 +285,7 @@
                         <!-- /input-group -->
                     </li>
                     <li>
-                        <a href="/control"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                        <a href="/control"><i class="fa fa-dashboard fa-fw"></i> لوحة التحكم</a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> العقارات<span class="fa arrow"></span></a>
@@ -295,9 +299,9 @@
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
-                    <li>
-                        <a href="pages/forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
-                    </li>
+                    {{--<li>--}}
+                        {{--<a href="pages/forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>--}}
+                    {{--</li>--}}
                     <li>
                         <a href="#"><i class="fa fa-wrench fa-fw"></i> الاعضاء <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
